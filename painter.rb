@@ -11,7 +11,7 @@ $repo_path = "."
 $graph_height =  7  # Saturday to Sudnay
 $graph_width  = 54  # weeks
 
-$graph_year = nil
+$graph_year = 2009
 
 FileUtils.cd(File.dirname(File.expand_path(__FILE__)))
 FileUtils.cd $repo_path
