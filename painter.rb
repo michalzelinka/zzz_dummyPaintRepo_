@@ -22,16 +22,23 @@ FileUtils.cd $repo_path
 # nil & nil = centred painting
 
 $columns_from_left = nil
-$columns_from_right = 7
+$columns_from_right = nil
 
-# Palette:   [█]   [▒]   [░]   [ ]
+# Palette:
+#  |█|  #006729
+#  |▓|  #00a33e
+#  |▒|  #50d270
+#  |░|  #b9eb89
+#  | |  #ebedf0
 
 $painting = <<EOF
-                    █
-██ ██ █ ███ █  █ █  █
-█ █ █ █ █   ████ █  █
-█ █ █ █ ███ █  █ █
-                    █
+           ▒▒▒▒▒▒▒      ▓ ▓▓      █▓█ █▓█
+  ▒▒▒▒▒    ▒▒▒▒▒▒▒      ▓█       █░░░█▒▒▒█
+ ▒▒   ▒▒ ▒▒▒▒▒▒▒▒▒▒▒   █▓▓▓▓     █░ ░░▒▒▒█
+ ▒▒▒▒▒▒▒   ▓░░░░░▓     █▓▓█▓▓▒▒   █░ ░▒▒█   █ ████ █
+ ▓░█░█░▓   ▓░▓░▓░▓     █▓▓▓▓▓▒▒    █░▒▒█    ████████
+ ░░▓▓▓░░   ░░░░░░░     █▓▓▓▓▒░░     █▒█      ██  ██
+  ░░░░░     ░░░░░     █▓▓▓▓▓▓▒▒      █
 EOF
 
 ##############
@@ -54,7 +61,7 @@ sunday = today - today.wday
 first_day_in_graph = (sunday - ($graph_height * ($graph_width - 1)))
 
 if $graph_year != nil then
-	throw :invalidYear if !$graph_year.is_a?(Fixnum) || $graph_year < 2011
+	throw :invalidYear if !$graph_year.is_a?(Fixnum) || $graph_year < 1970
 	first_day_in_graph = Date.parse("#{$graph_year}-01-01")
 	first_day_in_graph = first_day_in_graph - first_day_in_graph.wday
 end
@@ -73,10 +80,11 @@ $painting.split("\n").each_with_index{|l,li|
 		next if c == ' '
 		draw_date = start_col_first_day + (ci * $graph_height) + li + start_line
 		draw_date_str = draw_date.strftime "%Y-%m-%dT%h:%i:%sZ"
-		repeat = 1
-		repeat = 12 if c == '█'
-		repeat = 5  if c == '▒'
-		repeat = 2  if c == '░'
+		repeat = 0
+		repeat = 9  if c == '█'
+		repeat = 5  if c == '▓'
+		repeat = 3  if c == '▒'
+		repeat = 1  if c == '░'
 		# puts draw_date
 		repeat.times{|i| `git commit --allow-empty -m "Paint" --date #{draw_date_str}` }
 	}
