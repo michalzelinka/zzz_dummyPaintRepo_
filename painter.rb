@@ -11,7 +11,7 @@ $repo_path = "."
 $graph_height =  7  # Saturday to Sudnay
 $graph_width  = 54  # weeks
 
-$graph_year = nil
+$graph_year = 2013
 
 FileUtils.cd(File.dirname(File.expand_path(__FILE__)))
 FileUtils.cd $repo_path
@@ -21,7 +21,7 @@ FileUtils.cd $repo_path
 
 # nil & nil = centred painting
 
-$columns_from_left = nil
+$columns_from_left = 1
 $columns_from_right = nil
 
 # Palette:
@@ -32,13 +32,13 @@ $columns_from_right = nil
 #  | |  #ebedf0
 
 $painting = <<EOF
-           ▒▒▒▒▒▒▒      ▓ ▓▓      █▓█ █▓█
-  ▒▒▒▒▒    ▒▒▒▒▒▒▒      ▓█       █░░░█▒▒▒█
- ▒▒   ▒▒ ▒▒▒▒▒▒▒▒▒▒▒   █▓▓▓▓     █░ ░░▒▒▒█
- ▒▒▒▒▒▒▒   ▓░░░░░▓     █▓▓█▓▓▒▒   █░ ░▒▒█   █ ████ █
- ▓░█░█░▓   ▓░▓░▓░▓     █▓▓▓▓▓▒▒    █░▒▒█    ████████
- ░░▓▓▓░░   ░░░░░░░     █▓▓▓▓▒░░     █▒█      ██  ██
-  ░░░░░     ░░░░░     █▓▓▓▓▓▓▒▒      █
+   █             █          ▓
+   █             █          ▓
+ ███ ▓▓▓ █ █ ▓▓▓ █ ▓▓▓ ███  ▓
+█  █ ▓ ▓ █ █ ▓ ▓ █ ▓ ▓ █  █
+ ███ ▓▓   █  ▓▓  █ ▓▓▓ ███  ▒
+                       █
+                       █
 EOF
 
 ##############
