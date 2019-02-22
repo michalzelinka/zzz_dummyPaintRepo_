@@ -22,7 +22,7 @@ FileUtils.cd $repo_path
 # nil & nil = centred painting
 
 $columns_from_left = nil
-$columns_from_right = nil
+$columns_from_right = 7
 
 # Palette:
 #  |█|  #006729
@@ -32,13 +32,11 @@ $columns_from_right = nil
 #  | |  #ebedf0
 
 $painting = <<EOF
-           ▒▒▒▒▒▒▒      ▓ ▓▓      █▓█ █▓█
-  ▒▒▒▒▒    ▒▒▒▒▒▒▒      ▓█       █░░░█▒▒▒█
- ▒▒   ▒▒ ▒▒▒▒▒▒▒▒▒▒▒   █▓▓▓▓     █░ ░░▒▒▒█
- ▒▒▒▒▒▒▒   ▓░░░░░▓     █▓▓█▓▓▒▒   █░ ░▒▒█   █ ████ █
- ▓░█░█░▓   ▓░▓░▓░▓     █▓▓▓▓▓▒▒    █░▒▒█    ████████
- ░░▓▓▓░░   ░░░░░░░     █▓▓▓▓▒░░     █▒█      ██  ██
-  ░░░░░     ░░░░░     █▓▓▓▓▓▓▒▒      █
+                    ▓
+██ ██ █ ███ █  █ █  ▓
+█ █ █ █ █   ████ █  ▓
+█ █ █ █ ███ █  █ █
+                    ▓
 EOF
 
 ##############
@@ -81,8 +79,8 @@ $painting.split("\n").each_with_index{|l,li|
 		draw_date = start_col_first_day + (ci * $graph_height) + li + start_line
 		draw_date_str = draw_date.strftime "%Y-%m-%dT%h:%i:%sZ"
 		repeat = 0
-		repeat = 9  if c == '█'
-		repeat = 5  if c == '▓'
+		repeat = 30 if c == '█'
+		repeat = 20 if c == '▓'
 		repeat = 3  if c == '▒'
 		repeat = 1  if c == '░'
 		# puts draw_date
